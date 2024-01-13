@@ -1,0 +1,19 @@
+use dbms;
+create table UserTable(
+ID serial,
+Email varchar(40) not null unique,
+Name varchar(30),
+Password varchar(15)not null,
+Usertype varchar(10) not null,
+primary key (ID)
+);
+drop table UserTable;
+create table NonAdmin(
+ID serial,
+Gender varchar(7),
+Phone numeric(10,0) not null unique constraint Phone1_chk check(Phone>999999999),
+Address varchar(100),
+primary key(ID),
+foreign key(ID) references UserTable(ID) on delete cascade 
+);
+
